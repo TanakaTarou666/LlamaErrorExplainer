@@ -1,6 +1,6 @@
 if [ "$#" -eq 0 ]; then
     ollama run elyza:7b-instruct <<EOF
-以下のエラーが出ています。改善案を出して。
+以下のエラーが出ています。解説と改善案を出して。
 $(cat ~/log.txt)
 EOF
     <<EOF
@@ -23,7 +23,7 @@ done
 
 # エラー文を解説して改善案を出力
 ollama run elyza:7b-instruct <<EOF
-以下のエラーが出ています。改善案を出して。
+以下のエラーが出ています。解説と改善案を出して。
 $(cat ~/log.txt)
 ${code_content}
 EOF

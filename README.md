@@ -2,6 +2,9 @@
 ## 注意事項
 今回の手順では、Pythonを用いてテストを行います。なお、`~/.bashrc`を書き換えることで、他の環境でも同様の対応が可能です。
 
+## 動作環境
+windows 10
+
 ## 事前準備
 以下から `ELYZA-japanese-Llama-2-7b-instruct-q4_K_M.gguf` を `/env` にダウンロードしてください。
 
@@ -43,7 +46,11 @@ $ ollama create elyza:7b-instruct -f Modelfile
 以下が実行できればllamaの導入成功
 ```
 $ ollama run elyza:7b-instruct
->>> /bye # llamaの終了
+>>> Send a message (/? for help)
+```
+llamaの終了は以下
+```
+>>> /bye 
 ```
 ### 2. `.bashrc`の編集
 次に、以下を実行し、`vi` コマンドで `.bashrc` に関数を追加し、更新します。
@@ -53,11 +60,11 @@ $ vi ~/.bashrc
 追加する内容：
 ```
 function ee(){
-        bash ~/explain_error.bash 
+        bash ~/explain_error.bash
 }
 
 function pythonl(){
-        python 2> >(tee ~/log.txt)
+        python3 "$@" 2> >(tee ~/log.txt)
 }
 ```
 以下で変更を反映させる。
@@ -73,8 +80,9 @@ $ cp ../scripts/explain_error.bash ~/
 作業は終了。
 
 ## テスト実行
-`/scripts/test/`でディレクトリで以下を実行します。
+以下で`/scripts/test/`のディレクトリに移動しテストを実行します。
 ```
+$ cd ../scripts/test
 $ pythonl test.py
 $ ee
 ```

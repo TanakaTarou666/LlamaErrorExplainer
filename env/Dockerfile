@@ -1,3 +1,4 @@
+# docker exec -it llama_con bash
 # ベースイメージをUbuntuに指定
 FROM ubuntu:22.04
 
